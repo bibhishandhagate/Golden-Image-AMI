@@ -6,20 +6,18 @@ terraform {
       version = "~>5.0.0"
     }
   }
- # Define Terraform Backend for S3 and dynamodb table
+
+  # Define Terraform Backend for S3 and DynamoDB table
   backend "s3" {
-    bucket         = "rs-terraform-statefile01"
+    bucket         = "rs-terraform-statefile01565"
     key            = "terraform-statefile"
     region         = "ap-southeast-1"
-    role_arn       = "arn:aws:iam::640111764884:role/stsassume-role"
+    # role_arn removed — using access key/secret key instead
     dynamodb_table = "rs-terraform-statetable"
   }
 }
 
 provider "aws" {
   region = "ap-southeast-1"
-  assume_role {
-    role_arn     = "arn:aws:iam::640111764884:role/stsassume-role"
-    session_name = "terraform-sts"
-  }
+  # assume_role block removed — using access key/secret key instead
 }
