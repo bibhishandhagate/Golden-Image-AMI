@@ -7,7 +7,7 @@ variable region {
 variable instance_type {
   description = "instance type to launching AMI"
   type        = string
-  default     = "t4g.micro"
+  default     = "t4g.large"
 }
 
 variable ssh_user_name {
