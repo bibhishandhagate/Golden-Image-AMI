@@ -12,18 +12,17 @@ build {
   ]
 
   # Install and configure the web server on the EC2 instance
-  provisioner "shell" {
+provisioner "shell" {
   inline = [
-    "sudo yum update -y",                            
-    "sudo yum install httpd -y",                   
-    "sudo systemctl enable httpd",                 
-    "sudo systemctl start httpd",                 
-    "sudo yum install unzip -y",                   
+    "sudo yum update -y",
+    "sudo yum install httpd -y",
+    "sudo systemctl enable httpd",
+    "sudo systemctl start httpd",
+    "sudo yum install unzip -y",
     "sudo yum install wget -y",
-    "sudo wget -P /tmp html https://github.com/rahuls512/installation_scripts/blob/main/html%20files.zip", 
-    "sudo unzip -d /var/www/html/ /tmp/html%20files.zip",  
-    "sudo chown -R apache:apache /var/www/html/",    
-    "sudo systemctl restart httpd"                  
+    "sudo wget 'https://raw.githubusercontent.com/rahuls512/installation_scripts/main/index.html' -O /var/www/html/index.html",
+    "sudo chown -R apache:apache /var/www/html/",
+    "sudo systemctl restart httpd"
   ]
- }
+}
 }
