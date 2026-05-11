@@ -1,9 +1,4 @@
 source "amazon-ebs" "this" {
-  assume_role {
-    role_arn     = "arn:aws:iam::640111764884:role/stsassume-role"
-    session_name = "packer-session"
-
-  }
   region        = var.region
   source_ami    = data.amazon-ami.this.id
   instance_type = var.instance_type
