@@ -8,7 +8,7 @@ on:
 
 jobs:
   provision-packer:
-    runs-on: ubuntu-latest-4-cores
+    runs-on: self-hosted
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.aws_access_key }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.aws_secret_key }}
@@ -38,7 +38,7 @@ jobs:
         run: packer build ./image-builder/
 
   provision-terraform:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: provision-packer
     env:
       TF_VAR_awskey01: ${{ secrets.ssh_private_key }}
